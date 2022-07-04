@@ -1,0 +1,42 @@
+---
+title: "COVID deaths by race"
+output: html_document
+date: '2022-07-01'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(janitor)
+library(tidyverse)
+library(ggthemes)
+library(knitr)
+library(readr)
+```
+
+```{r}
+coviddata <- read.csv("COVIDdata.csv") |> 
+  #data downloaded from data.gov (https://catalog.data.gov/dataset/ah-provisional-covid-19-deaths-by-race-and-educational-attainment-f2f35/resource/a2c63003-59ef-4063-8493-a5a7e1fd433c)
+  janitor::clean_names() |> 
+  mutate(race = ifelse(grepl('Non-Hispanic ', race_or_hispanic_origin), gsub('Non-Hispanic ',"", race_or_hispanic_origin), race_or_hispanic_origin)) |> 
+  mutate(race = if_else(race == "American Indian or Alaska Native", "Native American", race)) |> 
+  mutate(race = if_else(race == "Native Hawaiian or Other Pacific Islander", "Pacific Islander", race)) |> 
+  mutate(pct_deaths = covid_19_deaths/ total_deaths)
+```
+
+```{r}
+covid_plot <- coviddata |> 
+  ggplot(aes(x = race, y = covid_19_deaths,
+             fill =  education_level)) +
+  geom_bar(position = "fill", stat = "identity") +
+  scale_y_continuous(labels = scales::percent)+
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  labs(title = "Covid Deaths by Race and Education Level",
+       fill = "Education level", color = "Education level",
+       x = "Race", y = " ",
+       subtitle = "In every race, those who have a Master's degree\n have the lowest percentage of deaths")
+```
+
+```{r}
+ggsave("covid_plot.png", covid_plot)
+```
+
