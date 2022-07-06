@@ -7,4 +7,11 @@ description: |
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
+# About Me
 
+My name is **Shivangi Nadkar** and I am a rising freshman at Newton North High School  
+
+
+## About My Project
+
+My project explores associations and trends from COVID-19 deaths depending on race and education levels

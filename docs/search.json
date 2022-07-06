@@ -5,8 +5,8 @@
       "title": "About this site",
       "description": "Some additional details about the website",
       "author": [],
-      "contents": "\n\n\n\n",
-      "last_modified": "2022-07-04T17:58:19-04:00"
+      "contents": "\nAbout Me\nMy name is Shivangi Nadkar and I am a rising\nfreshman at Newton North High School\nAbout My Project\nMy project explores associations and trends from COVID-19 deaths\ndepending on race and education levels\n\n\n\n",
+      "last_modified": "2022-07-04T18:41:49-04:00"
     },
     {
       "path": "final_plot.html",
@@ -14,15 +14,15 @@
       "author": [],
       "date": "2022-07-01",
       "contents": "\n\n\n\n\n\n\n\n\nCovid_Deaths\n\n\nHome\nAbout\n☰\n\n\n  \n    \n      \n        \n        \n        \n      \n      \n    \n    \n      \n  Home\n\n\n  About\n\n      \n  \n\n\n\n\n\n\nCOVID deaths by race\n2022-07-01\n\n\n\n\ncoviddata <- read.csv(\"COVIDdata.csv\") |> \n  #data downloaded from data.gov (https://catalog.data.gov/dataset/ah-provisional-covid-19-deaths-by-race-and-educational-attainment-f2f35/resource/a2c63003-59ef-4063-8493-a5a7e1fd433c)\n  janitor::clean_names() |> \n  mutate(race = ifelse(grepl('Non-Hispanic ', race_or_hispanic_origin), gsub('Non-Hispanic ',\"\", race_or_hispanic_origin), race_or_hispanic_origin)) |> \n  mutate(race = if_else(race == \"American Indian or Alaska Native\", \"Native American\", race)) |> \n  mutate(race = if_else(race == \"Native Hawaiian or Other Pacific Islander\", \"Pacific Islander\", race)) |> \n  mutate(pct_deaths = covid_19_deaths/ total_deaths)\ncovid_plot <- coviddata |> \n  ggplot(aes(x = race, y = covid_19_deaths,\n             fill =  education_level)) +\n  geom_bar(position = \"fill\", stat = \"identity\") +\n  scale_y_continuous(labels = scales::percent)+\n  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +\n  labs(title = \"Covid Deaths by Race and Education Level\",\n       fill = \"Education level\", color = \"Education level\",\n       x = \"Race\", y = \" \",\n       subtitle = \"In every race, those who have a Master's degree\\n have the lowest percentage of deaths\")\nggsave(\"covid_plot.png\", covid_plot)\n## Saving 7 x 5 in image\n\n\n\n\n\n\n\n\n\n\n",
-      "last_modified": "2022-07-04T17:58:23-04:00"
+      "last_modified": "2022-07-04T18:18:26-04:00"
     },
     {
       "path": "index.html",
       "title": "Study of Covid 19 Deaths by Race and Education Level",
-      "description": "Welcome to the website. I hope you enjoy it!\n",
+      "description": "This project explores the correlation between race and the amount of covid-19 deaths within education levels.\n",
       "author": [],
-      "contents": "\n\n\n\n",
-      "last_modified": "2022-07-04T17:58:26-04:00"
+      "contents": "\n\n\n\nIn every race, those who have a Master’s degree have the lowest\npercentage of deaths\n\n\n\n",
+      "last_modified": "2022-07-04T18:31:31-04:00"
     }
   ],
   "collections": []

@@ -1,7 +1,7 @@
 ---
 title: "Study of Covid 19 Deaths by Race and Education Level"
 description: |
-  Welcome to the website. I hope you enjoy it!
+  This project explores the correlation between race and the amount of covid-19 deaths within education levels.
 site: distill::distill_website
 ---
 
@@ -13,8 +13,10 @@ knitr::opts_chunk$set(echo = FALSE)
 
 # Learn more about publishing to GitHub Pages at:
 # https://rstudio.github.io/distill/publish_website.html#github-pages
-
-covid_plot
-
+library(knitr)
 ```
 
+```{r}
+include_graphics("covid_plot.png")
+```
+Although it affects everyone across education levels, those who have a lesser education on average have a higher chance of being affected by COVID.

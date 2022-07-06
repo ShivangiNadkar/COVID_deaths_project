@@ -33,7 +33,7 @@ covid_plot <- coviddata |>
   labs(title = "Covid Deaths by Race and Education Level",
        fill = "Education level", color = "Education level",
        x = "Race", y = " ",
-       subtitle = "In every race, those who have a Master's degree\n have the lowest percentage of deaths")
+       caption = "data.gov (Centers for Disease Control and Prevention)")
 ```
 
 ```{r}
