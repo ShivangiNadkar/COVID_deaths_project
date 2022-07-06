@@ -5,24 +5,52 @@
       "title": "About this site",
       "description": "Some additional details about the website",
       "author": [],
-      "contents": "\nAbout Me\nMy name is Shivangi Nadkar and I am a rising\nfreshman at Newton North High School\nAbout My Project\nMy project explores associations and trends from COVID-19 deaths\ndepending on race and education levels\n\n\n\n",
-      "last_modified": "2022-07-04T18:41:49-04:00"
+      "contents": "\nAbout Me\nMy name is Shivangi Nadkar and I am a rising\nfreshman at Newton North High School\nAbout My Project\nMy project explores associations and trends from COVID-19 deaths\ndepending on race and education levels\nGitHub Repository for this\nWebsite:\nhttps://github.com/ShivangiNadkar/Final_Project\n\n\n\n",
+      "last_modified": "2022-07-06T17:29:49-04:00"
     },
     {
       "path": "final_plot.html",
       "title": "COVID deaths by race",
       "author": [],
       "date": "2022-07-01",
-      "contents": "\n\n\n\n\n\n\n\n\nCovid_Deaths\n\n\nHome\nAbout\n☰\n\n\n  \n    \n      \n        \n        \n        \n      \n      \n    \n    \n      \n  Home\n\n\n  About\n\n      \n  \n\n\n\n\n\n\nCOVID deaths by race\n2022-07-01\n\n\n\n\ncoviddata <- read.csv(\"COVIDdata.csv\") |> \n  #data downloaded from data.gov (https://catalog.data.gov/dataset/ah-provisional-covid-19-deaths-by-race-and-educational-attainment-f2f35/resource/a2c63003-59ef-4063-8493-a5a7e1fd433c)\n  janitor::clean_names() |> \n  mutate(race = ifelse(grepl('Non-Hispanic ', race_or_hispanic_origin), gsub('Non-Hispanic ',\"\", race_or_hispanic_origin), race_or_hispanic_origin)) |> \n  mutate(race = if_else(race == \"American Indian or Alaska Native\", \"Native American\", race)) |> \n  mutate(race = if_else(race == \"Native Hawaiian or Other Pacific Islander\", \"Pacific Islander\", race)) |> \n  mutate(pct_deaths = covid_19_deaths/ total_deaths)\ncovid_plot <- coviddata |> \n  ggplot(aes(x = race, y = covid_19_deaths,\n             fill =  education_level)) +\n  geom_bar(position = \"fill\", stat = \"identity\") +\n  scale_y_continuous(labels = scales::percent)+\n  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +\n  labs(title = \"Covid Deaths by Race and Education Level\",\n       fill = \"Education level\", color = \"Education level\",\n       x = \"Race\", y = \" \",\n       subtitle = \"In every race, those who have a Master's degree\\n have the lowest percentage of deaths\")\nggsave(\"covid_plot.png\", covid_plot)\n## Saving 7 x 5 in image\n\n\n\n\n\n\n\n\n\n\n",
-      "last_modified": "2022-07-04T18:18:26-04:00"
+      "contents": "\n\n\n\n\n\n\n\n\nCovid_Deaths\n\n\nHome\nAbout\n\n\nSources\n \n▾\n\n\nSource A\nSource B\n\n\n☰\n\n\n  \n    \n      \n        \n        \n        \n      \n      \n    \n    \n      \n  Home\n\n\n  About\n\n\n  \n    Sources\n     \n    \n  \n  \n      Source A\n    \n    \n      Source B\n    \n  \n      \n  \n\n\n\n\n\n\nCOVID deaths by race\n2022-07-01\n\n\n\n\ncoviddata <- read.csv(\"COVIDdata.csv\") |> \n  #data downloaded from data.gov (https://catalog.data.gov/dataset/ah-provisional-covid-19-deaths-by-race-and-educational-attainment-f2f35/resource/a2c63003-59ef-4063-8493-a5a7e1fd433c)\n  janitor::clean_names() |> \n  mutate(race = ifelse(grepl('Non-Hispanic ', race_or_hispanic_origin), gsub('Non-Hispanic ',\"\", race_or_hispanic_origin), race_or_hispanic_origin)) |> \n  mutate(race = if_else(race == \"American Indian or Alaska Native\", \"Native American\", race)) |> \n  mutate(race = if_else(race == \"Native Hawaiian or Other Pacific Islander\", \"Pacific Islander\", race)) |> \n  mutate(pct_deaths = covid_19_deaths/ total_deaths)\ncovid_plot <- coviddata |> \n  ggplot(aes(x = race, y = covid_19_deaths,\n             fill =  education_level)) +\n  geom_bar(position = \"fill\", stat = \"identity\") +\n  scale_y_continuous(labels = scales::percent)+\n  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +\n  labs(title = \"Covid Deaths by Race and Education Level\",\n       fill = \"Education level\", color = \"Education level\",\n       x = \"Race\", y = \" \",\n       caption = \"data.gov (Centers for Disease Control and Prevention)\")\nggsave(\"covid_plot.png\", covid_plot)\n## Saving 7 x 5 in image\n\n\n\n\n\n\n\n\n\n\n",
+      "last_modified": "2022-07-06T17:29:52-04:00"
     },
     {
       "path": "index.html",
       "title": "Study of Covid 19 Deaths by Race and Education Level",
       "description": "This project explores the correlation between race and the amount of covid-19 deaths within education levels.\n",
       "author": [],
-      "contents": "\n\n\n\nIn every race, those who have a Master’s degree have the lowest\npercentage of deaths\n\n\n\n",
-      "last_modified": "2022-07-04T18:31:31-04:00"
+      "contents": "\n\n\n\nAlthough it affects everyone across education levels, those who have\na lesser education on average have a higher chance of being affected by\nCOVID.\nHowever, one flaw about this graph is that is does not represent the\nUnknown categories in the same way every other category is.\n\n\n\n",
+      "last_modified": "2022-07-06T17:29:52-04:00"
+    },
+    {
+      "path": "Source_A.html",
+      "title": "Source A",
+      "description": "Detailed notes for Source A\n",
+      "author": [
+        {
+          "name": "Shivangi Nadkar",
+          "url": {}
+        }
+      ],
+      "date": "`r Sys.Date()`",
+      "contents": "\nNational Center for Health Statistics. AH Provisional COVID-19 Deaths\nby Race and Educational Attainment. Date accessed [Last accessed date].\nAvailable from https://data.cdc.gov/d/i6ej-9eac.\n\n\n\n",
+      "last_modified": "2022-07-06T17:29:53-04:00"
+    },
+    {
+      "path": "Source_B.html",
+      "title": "Source B",
+      "description": "Detailed notes for Source B\n",
+      "author": [
+        {
+          "name": "Shivangi Nadkar",
+          "url": {}
+        }
+      ],
+      "date": "`r Sys.Date()`",
+      "contents": "\nDistill is a publication format for scientific and technical writing,\nnative to the web.\nLearn more about using Distill for R Markdown at https://rstudio.github.io/distill.\n\n\n\n",
+      "last_modified": "2022-07-06T17:29:54-04:00"
     }
   ],
   "collections": []

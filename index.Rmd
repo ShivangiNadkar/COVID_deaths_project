@@ -20,3 +20,6 @@ library(knitr)
 include_graphics("covid_plot.png")
 ```
 Although it affects everyone across education levels, those who have a lesser education on average have a higher chance of being affected by COVID.
+
+
+However, one flaw about this graph is that is does not represent the Unknown categories in the same way every other category is.

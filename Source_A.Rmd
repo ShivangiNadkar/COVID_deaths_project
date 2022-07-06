@@ -1,0 +1,16 @@
+---
+title: "Source A"
+description: |
+  Detailed notes for Source A
+author:
+  - name: Shivangi Nadkar 
+date: "`r Sys.Date()`"
+output: distill::distill_article
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+National Center for Health Statistics. AH Provisional COVID-19
+Deaths by Race and Educational Attainment. Date accessed [Last
+accessed date]. Available from https://data.cdc.gov/d/i6ej-9eac.
